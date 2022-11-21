@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f6f2bf8-de7d-408e-8d5e-c90060744e5f" name="Changes" comment="Add code docs to the main implementation">
-      <change afterPath="$PROJECT_DIR$/src/authentication/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/endpoint/iot_endpoint_authentication_handler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/endpoint/iot_endpoint_authentication_server.py" afterDir="false" />
+    <list default="true" id="8f6f2bf8-de7d-408e-8d5e-c90060744e5f" name="Changes" comment="Create the base authentication server">
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/authentication/authentication_exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/authentication/client_authentication_request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/authentication/client_authentication_response.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/endpoint/iot_endpoint_authentication_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/endpoint/iot_endpoint_authentication_handler.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +44,9 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/max/Development/Python/iot-utilities-server-python&quot;
+    &quot;last_opened_file_path&quot;: &quot;/Users/max/Development/Python/iot-utilities-server-python&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -57,19 +61,19 @@
   </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="iot-utilities-python" />
+      <module name="iot-utilities-server-python" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/../virtual-trackpad-server/venv/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bin/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -89,6 +93,8 @@
       <updated>1668946241633</updated>
       <workItem from="1668946243283" duration="3681000" />
       <workItem from="1668950054494" duration="879000" />
+      <workItem from="1669054177813" duration="1507000" />
+      <workItem from="1669055815471" duration="149000" />
     </task>
     <task id="LOCAL-00001" summary="Initialize project with proto sources">
       <created>1668946793840</created>
@@ -104,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668947943438</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Create the base authentication server">
+      <created>1668961855528</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1668961855528</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,9 +137,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initialize project with proto sources" />
     <MESSAGE value="Create basic websocket server implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create basic websocket server implementation" />
+    <MESSAGE value="Create the base authentication server" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create the base authentication server" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/iot_utilities_python$main.coverage" NAME="main Coverage Results" MODIFIED="1668949052466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/iot_utilities_server_python$main.coverage" NAME="main Coverage Results" MODIFIED="1669055942533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
