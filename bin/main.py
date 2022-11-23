@@ -24,7 +24,9 @@ def main():
     )
 
     # Configure the authentication server
-    authentication_server = IoTEndpointAuthenticationServer()
+    authentication_server = IoTEndpointAuthenticationServer(
+        arguments.certificate
+    )
 
     # Start the threads for the servers
     https_thread = Thread(target=authentication_server.start)

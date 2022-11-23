@@ -1,0 +1,6 @@
+{
+  "auth_username": "USERNAME_HERE",
+  "auth_password": "PASSWORD_HERE",
+  "auth_secret": "AUTH_SECRET_HERE",
+  "jwt_signature_secret": "JWT_SECRET_HERE"
+}
