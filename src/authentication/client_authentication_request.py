@@ -1,5 +1,6 @@
 import json
 from src.authentication.authentication_exception import AuthenticationException
+from src.authentication.jwt_authenticator import JWTAuthenticator
 
 
 class ClientAuthenticationRequest:
@@ -50,7 +51,7 @@ class ClientAuthenticationRequest:
         if self.grant_type == self.GRANT_TYPE_PASSWORD:
             return self.password == "password"
         elif self.grant_type == self.GRANT_TYPE_REFRESH_TOKEN:
-            return self.refresh_token == "refresh_token"
+            return JWTAuthenticator.validate_refresh_token(self.refresh_token)
         elif self.grant_type == self.GRANT_TYPE_CLIENT_CREDENTIALS:
             return self.client_secret == "client_secret"
         else:

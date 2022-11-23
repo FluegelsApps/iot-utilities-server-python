@@ -1,4 +1,5 @@
 from src.authentication.client_authentication_request import ClientAuthenticationRequest
+from src.authentication.jwt_authenticator import JWTAuthenticator
 import json
 
 
@@ -27,8 +28,8 @@ class ClientAuthenticationResponse:
     @staticmethod
     def with_access_token(request):
         default_response = ClientAuthenticationResponse()
-        default_response.access_token = "access_token"
-        default_response.refresh_token = "refresh_token"
+        default_response.access_token = JWTAuthenticator.generate_access_token()
+        default_response.refresh_token = JWTAuthenticator.generate_refresh_token()
         default_response.expires_in = "600s"
         default_response.token_type = ClientAuthenticationResponse.TOKEN_TYPE_DEFAULT
         default_response.scope = request.scope
@@ -37,11 +38,11 @@ class ClientAuthenticationResponse:
     @staticmethod
     def with_refresh_token(request):
         refresh_response = ClientAuthenticationResponse()
-        refresh_response.access_token = "access_token"
+        refresh_response.access_token = JWTAuthenticator.generate_access_token()
         refresh_response.expires_in = "600s"
         refresh_response.token_type = ClientAuthenticationResponse.TOKEN_TYPE_DEFAULT
         refresh_response.scope = request.scope
         return refresh_response
 
     def to_json(self):
-        return json.dumps(self)
+        return json.dumps(self, default=lambda o: o.__dict__)
