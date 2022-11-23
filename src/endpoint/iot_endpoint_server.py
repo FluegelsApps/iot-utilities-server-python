@@ -5,6 +5,7 @@ import ssl
 
 import src.proto.aruba_iot_nb_pb2
 from src.utils import resolve_mac_address
+from src.authentication.jwt_authenticator import JWTAuthenticator
 
 
 class IoTEndpointServer:
@@ -47,32 +48,35 @@ class IoTEndpointServer:
             telemetry = src.proto.aruba_iot_nb_pb2.Telemetry()
             telemetry.ParseFromString(message)
 
-            if self.__raw_output:
-                print(telemetry)
-            else:
-                # Print message and reporter information
-                print()
-                print(f"Incoming protobuf message with topic: {telemetry.meta.nbTopic}")
-                print()
-                print(f"--- Reporter ---")
-                print(f"Name: {telemetry.reporter.name}")
-                print(f"MAC-Address: {resolve_mac_address(telemetry.reporter.mac)}")
-                print(f"iPv4-Address: {telemetry.reporter.ipv4}")
-                print(f"iPv6-Address: {telemetry.reporter.ipv6}")
-                print(f"Hardware Type: {telemetry.reporter.hwType}")
-                print(f"Software Version: {telemetry.reporter.swVersion}")
-                print(f"Software Build: {telemetry.reporter.swBuild}")
-
-                # Print telemetry information
-                if len(telemetry.reported) > 0:
+            if JWTAuthenticator.validate_access_token(telemetry.meta.access_token):
+                if self.__raw_output:
+                    print(telemetry)
+                else:
+                    # Print message and reporter information
                     print()
-                    print(f"--- Telemetry Data ---")
+                    print(f"Incoming protobuf message with topic: {telemetry.meta.nbTopic}")
+                    print()
+                    print(f"--- Reporter ---")
+                    print(f"Name: {telemetry.reporter.name}")
+                    print(f"MAC-Address: {resolve_mac_address(telemetry.reporter.mac)}")
+                    print(f"iPv4-Address: {telemetry.reporter.ipv4}")
+                    print(f"iPv6-Address: {telemetry.reporter.ipv6}")
+                    print(f"Hardware Type: {telemetry.reporter.hwType}")
+                    print(f"Software Version: {telemetry.reporter.swVersion}")
+                    print(f"Software Build: {telemetry.reporter.swBuild}")
 
-                    for reported in telemetry.reported:
-                        print(f"MAC-Address: {resolve_mac_address(reported.mac)}")
-                        print(f"Device class: {reported.deviceClass}")
-                        print(f"RSSI: {reported.rssi}")
-                        print(f"Beacons:\n{reported.beacons}")
+                    # Print telemetry information
+                    if len(telemetry.reported) > 0:
+                        print()
+                        print(f"--- Telemetry Data ---")
+
+                        for reported in telemetry.reported:
+                            print(f"MAC-Address: {resolve_mac_address(reported.mac)}")
+                            print(f"Device class: {reported.deviceClass}")
+                            print(f"RSSI: {reported.rssi}")
+                            print(f"Beacons:\n{reported.beacons}")
+            else:
+                print(f"Message with invalid access token received: {telemetry.meta.access_token}")
 
     async def __start_internal(self):
         """
