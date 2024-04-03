@@ -1,6 +1,6 @@
 # IoT-Utilities Python Server
 
-This is an example implementation of an IoT-Server leveraging the Aruba IoT-Framework available in ArubaOS/Aruba Instant 8.x written in the Python programming language.
+This is an example implementation of an IoT-Server leveraging the [Aruba IoT-Framework](https://www.arubanetworks.com/techdocs/ArubaOS_8.10.0_Web_Help/Content/arubaos-solutions/iot-new/iot-overview.htm?Highlight=iot) available in ArubaOS/Aruba Instant 8.x written in the Python programming language.
 It works similar to the [IoT-Utilities App](https://iot-utilities.arubademo.de/).
 
 ## Usage
